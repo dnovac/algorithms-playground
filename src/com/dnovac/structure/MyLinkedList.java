@@ -1,4 +1,4 @@
-package com.dnovac;
+package com.dnovac.structure;
 
 public class MyLinkedList {
 
@@ -18,9 +18,7 @@ public class MyLinkedList {
       this.value = value;
       this.next = null;
     }
-
   }
-
 
   //insert a new Node
   public static MyLinkedList addToTail(MyLinkedList list, int value) {
@@ -44,13 +42,6 @@ public class MyLinkedList {
     }
     return list;
   }
-
-  //get
-
-  //getByIndex
-
-  //delete
-
 
   public static void printList(MyLinkedList list) {
 
