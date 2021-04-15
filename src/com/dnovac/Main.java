@@ -1,24 +1,22 @@
 package com.dnovac;
 
+import static java.lang.Math.random;
+
 import com.dnovac.search.BinarySearch;
 import com.dnovac.search.QuickSort;
 import com.dnovac.structure.MyLinkedList;
 import com.dnovac.tree.BinaryTreeImpl;
-
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-
-import static java.lang.Math.random;
 
 
 public class Main {
@@ -42,7 +40,8 @@ public class Main {
     traverseBinaryTreeInAllTheOrders(root);
 
     // sum of tree
-    System.out.println(String.format("========= The sum of tree elements is : %s ================", BinaryTreeImpl.sumOfTreeNodes(root)));
+    System.out.println(String.format("========= The sum of tree elements is : %s ================",
+      BinaryTreeImpl.sumOfTreeNodes(root)));
 
     //anagram
     boolean anagram = anagram("mary", "army");
@@ -71,7 +70,8 @@ public class Main {
     int[] randomArray = IntStream.range((int) random(), 100).toArray();
     List<Integer> randomList = quickSortArray(randomArray);
 
-    int maximumNumber = randomList.stream().mapToInt(value -> value).max().orElseThrow(NoSuchElementException::new);
+    int maximumNumber = randomList.stream().mapToInt(value -> value).max()
+      .orElseThrow(NoSuchElementException::new);
     int maximumIndex = randomList.indexOf(maximumNumber);
     System.out.println(String.format("MAX is %s at index %s", maximumNumber, maximumIndex));
 
@@ -81,7 +81,8 @@ public class Main {
     BinaryTreeImpl.inOrder(root);
 
     System.out.println(String.format("\nMAX height of tree is: %s", binaryTree.maxHeight(root)));
-    System.out.println(String.format("\n Height of tree for input data is: %s", binaryTree.heightOfNode(root, 9, 1)));
+    System.out.println(String
+      .format("\n Height of tree for input data is: %s", binaryTree.heightOfNode(root, 9, 1)));
 
     System.out.println("===== PRINT NODES AT K DISTANCE FROM ROOT =====");
     BinaryTreeImpl.printKDistant(root, 2);
