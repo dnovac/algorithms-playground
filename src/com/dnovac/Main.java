@@ -186,7 +186,6 @@ public class Main {
   }
 
   private static int reverse(int number) {
-
     int reverse = 0;
     while (number != 0) {
       reverse = reverse * 10 + number % 10;
@@ -195,23 +194,43 @@ public class Main {
     return reverse;
   }
 
+  /**
+   * Find Intersection Have the function FindIntersection(strArr) read the array of strings stored
+   * in strArr which will contain 2 elements: the first element will represent a list of
+   * comma-separated numbers sorted in ascending order, the second element will represent a second
+   * list of comma-separated numbers (also sorted). Your goal is to return a comma-separated string
+   * containing the numbers that occur in elements of strArr in sorted order. If there is no
+   * intersection, return the string false. Examples Input: new String[] {"1, 3, 4, 7, 13", "1, 2,
+   * 4, 13, 15"} Output: 1,4,13
+   *
+   * @param strArr
+   * @return string to match the output
+   * @see https://coderbyte.com/editor/Find%20Intersection:Java
+   */
   private static String findIntersection(String[] strArr) {
     // code goes here
     List<String> strings = new ArrayList<>();
-    Set<String> set = new HashSet<>();
-    Set<String> setToReturn = new HashSet<>();
+    Set<Integer> set = new HashSet<>();
+    Set<Integer> setToReturn = new HashSet<>();
+    StringBuilder stringBuilder = new StringBuilder();
 
     for (String array : strArr) {
       strings.addAll(Arrays.asList(array.split(",")));
     }
 
-    for (String number : strings) {
+    final List<Integer> collect = strings.stream()
+      .map(s -> Integer.valueOf(s.stripLeading()))
+      .sorted()
+      .collect(Collectors.toList());
+
+    for (Integer number : collect) {
       if (!set.add(number)) {
         setToReturn.add(number);
+        stringBuilder.append(number.toString()).append(",");
       }
     }
 
-    return setToReturn.toString();
+    return stringBuilder.toString();
   }
 
 
