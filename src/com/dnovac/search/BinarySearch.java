@@ -1,5 +1,7 @@
 package com.dnovac.search;
 
+import java.util.Arrays;
+
 /**
  * @author Dan Novac on 31/10/2020
  * @project algorithms-playground
@@ -35,6 +37,8 @@ public class BinarySearch {
    */
 
   public static int binarySearch(int[] array, int start, int end, int target) {
+
+    Arrays.sort(array);
 
     if (start > end) {
       return -1;

@@ -50,6 +50,9 @@ public class Main {
       e.printStackTrace();
     }
 
+    System.out.println("\n******* Factorial *********");
+    System.out.printf("Factorial of nr is: %s", firstFactorial(18));
+
     System.out.println("\n######## begin ############");
 
     int[] numbers = {1, 20, 22, 102, 101, 1221, 13321, 13331, 0, 11};
@@ -359,7 +362,6 @@ public class Main {
   }
 
 
-
   /*************************************************************************
    *                                                                        *
    *  Using the JavaScript language, have the function MostFreeTime(strArr) *
@@ -381,6 +383,161 @@ public class Main {
   private static String[] MostFreeTime(String[] strArr) {
     // code goes here
     return strArr;
+  }
+
+  /**
+   * * Have the function PrimeTime(num) take the num parameter being passed and return the string
+   * true if the parameter * is a prime number, otherwise return the string false. The range will be
+   * between 1 and 2^16. *
+   *
+   * @param num
+   * @return
+   */
+  private static boolean primeNumber(long num) {
+
+    if (num <= 1 || num % 2 == 0) {
+      return false;
+    }
+
+    for (int i = 2; i <= num / 2; i++) {
+      if (num % i == 0) {
+        System.out.printf("%s is NOT prime", num);
+        return false;
+      }
+    }
+    System.out.printf("%s is prime number!", num);
+    return true;
+  }
+
+
+  /**
+   * Have the function ArithGeoII(arr) take the array of numbers stored in arr and return the string
+   * "Arithmetic" if the sequence follows an arithmetic pattern or return "Geometric" if it follows
+   * a geometric pattern. If the sequence doesn't follow either pattern return -1. An arithmetic
+   * sequence is one where the difference between each of the numbers is consistent, where as in a
+   * geometric sequence, each term after the first is multiplied by some constant or common ratio.
+   * Arithmetic example: [2, 4, 6, 8] and Geometric example: [2, 6, 18, 54]. Negative numbers may be
+   * entered as parameters, 0 will not be entered, and no array will contain all the same elements
+   **/
+  String ArithGeoII(int[] arr) {
+    if (isArithmetic(arr)) {
+      return "Arithmetic";
+    } else if (isGeometric(arr)) {
+      return "Geometric";
+    }
+
+    return "-1";
+  }
+
+  /**
+   * Have the function BinaryConverter(str) return the decimal form of the binary value. For
+   * example: if 101 is passed return 5, or if 1000 is passed return 8.
+   */
+  private static int binaryConverter(String str) {
+    return Integer.parseInt(str, 2);
+  }
+
+  boolean isArithmetic(int[] arr) {
+    int diff = Math.abs(arr[1] - arr[0]);
+    int previousDiff = diff;
+    for (int i = 2; i < arr.length; i++) {
+      diff = Math.abs(arr[i] - arr[i - 1]);
+      if (diff != previousDiff) {
+        return false;
+      }
+      previousDiff = diff;
+    }
+    return true;
+  }
+
+  boolean isGeometric(int[] arr) {
+    int diff = arr[1] / arr[0];
+    int previousDiff = diff;
+    for (int i = 2; i < arr.length; i++) {
+      diff = arr[i] / arr[i - 1];
+      if (diff != previousDiff) {
+        return false;
+      }
+      previousDiff = diff;
+    }
+    return true;
+  }
+
+  /**
+   * Have the function FirstFactorial(num) take the num parameter being passed and return the
+   * factorial of it (ie. if num = 4, return (4 * 3 * 2 * 1)). For the test cases, the range will be
+   * between 1 and 18.
+   *
+   * @author Dan Novac
+   */
+  private static Long firstFactorial(int num) {
+
+    long factorial = 1L;
+    int[] array = new int[num];
+    for (int i = 1; i <= array.length; i++) {
+      array[i - 1] = i;
+    }
+
+    for (int i = 0; i < array.length; i++) {
+      factorial *= array[i];
+    }
+
+    //OR for (int i = 2; i <= num; i++) {
+    //            result *= i;
+    //        }
+
+    return factorial;
+  }
+
+  /**
+   * Have the function BracketMatcher(str) take the str parameter being passed and return 1 if the
+   * brackets are correctly matched and each one is accounted for. Otherwise return 0. For example:
+   * if str is "(hello (world))", then the output should be 1, but if str is "((hello (world))" the
+   * the output should be 0 because the brackets do not correctly match up. Only "(" and ")" will be
+   * used as brackets. If str contains no brackets return 1.
+   */
+  public static int bracketMatcher(String text) {
+    final char[] chars = text.toCharArray();
+    int openBrackets = 0;
+
+    for (char aChar : chars) {
+      if (aChar == '(') {
+        openBrackets++;
+      } else if (aChar == ')' && openBrackets > 0) {
+        openBrackets--;
+      } else if (aChar == ')') {
+        return 0;
+      }
+    }
+
+    if (openBrackets == 0) {
+      return 1;
+    } else {
+      return 0;
+    }
+
+  }
+
+  /**
+   * Using the Java language, have the function CoinDeterminer(num) take the input, which will be an
+   * integer ranging from 1 to 250, and return an integer output that will specify the least number
+   * of coins, that when added, equal the input integer. Coins are based on a system as follows:
+   * there are coins representing the integers 1, 5, 7, 9, and 11. So for example: if num is 16,
+   * then the output should be 2 because you can achieve the number 16 with the coins 9 and 7. If
+   * num is 25, then the output should be 3 because you can achieve 25 with either 11, 9, and 5
+   * coins or with 9, 9, and 7 coins.
+   */
+  public int coinDeterminer(int num) {
+    final int[] coins = new int[]{1, 5, 7, 9, 11};
+    int numberOfAdditions[] = new int[coins.length];
+    int sumofCoins = 0;
+
+    for(int i = 0; i < coins.length; i++) {
+      if(coins[i] == num) {
+
+      }
+    }
+    return 0;
   }
 
 }
